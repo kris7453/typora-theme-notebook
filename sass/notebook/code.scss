@@ -1,0 +1,300 @@
+@use "sass:string";
+
+$sc-keyword-color: "atom" --sc-atom-color, "number" --sc-number-color, "def" --sc-def-color,
+    "variable" --sc-variable-color, "variable-2" --sc-variable2-color, "variable-3" --sc-variable3-color,
+    "property" --sc-property-color, "operator" --sc-operator-color, "comment" --sc-comment-color,
+    "string" --sc-string-color, "string-2" --sc-string2-color, "meta" --sc-meta-color, "qualifier" --sc-qualifier-color,
+    "builtin" --sc-buildin-color, "bracket" --sc-bracket-color, "tag" --sc-tag-color, "attribute" --sc-attribute-color,
+    "header" --sm-header-property-color, "quote" #090, "hr" --sm-hr-color, "link" --sm-link-color;
+
+:root {
+    --code-block-bg-color: var(--bg-second-color);
+    --gutter-bg-color: var(--theme-color);
+    --linenumber-color: var(--bg-color);
+    --active-line-bg-color: var(--bg-third-color);
+
+    --focus-gutter-bg-color: var(--focus-bg-color);
+    --focus-select-text-bg-color: var(--focus-bg-color);
+
+    /* sc - source code */
+    --sc-keyword-color: #ff6000;
+    --sc-qualifier-color: #decb6b;
+    --sc-operator-color: white;
+    --sc-bracket-color: #997;
+    --sc-comment-color: #545454;
+
+    --sc-buildin-color: #ffcb6b; // commands like 'sudo' in Linux
+
+    --sc-number-color: #42bdf9;
+    --sc-atom-color: var(--sc-number-color); // e.g. true/false value
+    --sc-string-color: #c3e88d;
+    --sc-string2-color: #f07178;
+
+    --sc-def-color: lime; // variable definition
+    --sc-variable-color: var(--sc-def-color);
+    --sc-variable2-color: #eeffff;
+    --sc-variable3-color: #f07178;
+    --sc-property-color: #c792ea;
+
+    --sc-meta-color: #ffcb6b; // meta information like <!DOCTYPE html>
+    --sc-tag-color: #ff5370;
+    --sc-attribute-color: #c792ea;
+
+    /* sm - source mode*/
+    --sm-link-color: var(--theme-color);
+    --sm-comment-code-color: var(--sc-def-color); // equivalent of `code` or ```html in md
+    --sm-header-property-color: var(--sc-property-color);
+    --sm-hr-color: var(--sc-comment-color);
+    --sm-tag-color: var(--sc-tag-color); // markdown tags like ![img]
+    --sm-string-color: var(--sc-string-color);
+}
+
+.md-fences {
+    background: var(--code-block-bg-color);
+    margin: 0 0 30px;
+    padding: 0.3em 1em;
+    padding-top: 0.4em;
+    font-size: 1em;
+}
+
+/* BASICS */
+.CodeMirror {
+    /* Set height, width, borders, and global font properties here */
+    height: 300px;
+    height: auto;
+}
+
+.CodeMirror-scroll {
+    /* Set scrolling behaviour here */
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+/* PADDING */
+.CodeMirror-lines {
+    padding: 6px;
+    /* Vertical padding around content */
+}
+
+.CodeMirror pre {
+    /* Horizontal padding of content */
+    padding-left: 10px;
+}
+.CodeMirror-scrollbar-filler,
+.CodeMirror-gutter-filler {
+    background-color: black;
+    /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+.CodeMirror-gutters {
+    height: auto;
+    background-color: var(--gutter-bg-color);
+    white-space: nowrap;
+}
+
+.on-focus-mode {
+    .CodeMirror-gutters {
+        background: var(--focus-gutter-bg-color) !important;
+    }
+
+    .CodeMirror-selected,
+    .CodeMirror-selectedtext {
+        background: var(--focus-select-text-bg-color) !important;
+    }
+}
+
+.CodeMirror-linenumber {
+    padding: 0 3px 0 5px;
+    text-align: right;
+    color: var(--linenumber-color);
+}
+/* CURSOR */
+
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 1px solid var(--text-color);
+    z-index: 3;
+}
+/* Shown when moving in bi-directional text */
+
+.CodeMirror div.CodeMirror-secondarycursor {
+    border-left: 1px solid silver;
+}
+.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor {
+    width: auto;
+    border: 0;
+    background: #7e7;
+    z-index: 1;
+}
+/* Can style cursor different in overwrite (non-insert) mode */
+
+/* .CodeMirror div.CodeMirror-cursor.CodeMirror-overwrite {} .cm-tab {
+    display: inline-block;
+} */
+
+/* DEFAULT THEME */
+.on-focus-mode .md-fences.md-focus .cm-keyword.CodeMirror-selectedtext,
+.cm-s-inner .cm-keyword {
+    color: var(--sc-keyword-color);
+}
+
+.cm-s-inner {
+    @each $name, $color in $sc-keyword-color {
+        .cm-#{$name} {
+            @if str-slice("#{$color}", 1, 2) == "--" {
+                color: var($color);
+            } @else {
+                color: $color;
+            }
+        }
+    }
+
+    .CodeMirror-activeline-background {
+        background: var(--active-line-bg-color);
+    }
+}
+
+.cm-negative {
+    color: #d44;
+}
+.cm-positive {
+    color: #292;
+}
+
+.cm-error {
+    color: #f00;
+}
+.cm-invalidchar {
+    color: #f00;
+}
+
+.cm-header,
+.cm-strong {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+.cm-del {
+    text-decoration: line-through;
+}
+.cm-em {
+    font-style: italic;
+}
+.cm-link {
+    text-decoration: underline;
+}
+
+div.CodeMirror span.CodeMirror {
+    &-matchingbracket {
+        color: #0f0;
+    }
+
+    &-nonmatchingbracket {
+        color: #f22;
+    }
+}
+
+/** sourcemode highlight **/
+.cm-s-typora-default {
+    .cm-header,
+    .cm-property {
+        color: var(--sm-header-property-color);
+    }
+
+    pre.cm-header1:not(.cm-atom) *:not(.cm-overlay) {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+
+    pre.cm-header2:not(.cm-atom) *:not(.cm-overlay) {
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+    }
+
+    .cm-atom,
+    .cm-number {
+        color: var(--sc-number-color);
+    }
+
+    .cm-table-row,
+    .cm-block-start {
+        font-family: monospace;
+    }
+
+    .cm-comment,
+    .cm-code {
+        color: var(--sm-comment-code-color);
+        font-family: monospace;
+    }
+
+    .cm-tag {
+        color: var(--sm-tag-color);
+    }
+
+    .cm-string {
+        color: var(--sm-string-color);
+    }
+
+    .cm-link {
+        color: var(--sm-link-color);
+        text-decoration: underline;
+    }
+
+    .cm-variable-2,
+    .cm-variable-1 {
+        color: inherit;
+    }
+
+    .cm-overlay {
+        font-size: 1rem;
+        font-family: monospace;
+    }
+
+    .CodeMirror-activeline-background {
+        left: -60px;
+        right: -30px;
+        background: rgba(204, 204, 204, 0.2);
+    }
+
+    .CodeMirror-gutters {
+        border-right: none;
+        background-color: inherit;
+    }
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+    border-left: 3px solid #e4629a;
+}
+
+.cm-s-typora-default .cm-trailing-space-new-line:after,
+.cm-startspace:after,
+.cm-starttab .cm-tab:after {
+    content: "•";
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    font-family: "LetterGothicStd", monospace;
+}
+
+.os-windows .cm-startspace:after,
+.os-windows .cm-starttab .cm-tab:after {
+    left: -0.1em;
+}
+
+.cm-starttab .cm-tab:after {
+    content: " ";
+}
+
+.cm-startspace,
+.cm-tab,
+.cm-starttab,
+.cm-trailing-space-a,
+.cm-trailing-space-b,
+.cm-trailing-space-new-line {
+    font-family: monospace;
+    position: relative;
+}
+
+.cm-s-typora-default .cm-trailing-space-new-line:after {
+    content: "↓";
+    opacity: 0.3;
+}

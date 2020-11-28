@@ -1,0 +1,25 @@
+$fonts: 
+    "Light" 300 normal,
+    "LightItalic" 300 italic,
+    "Regular" normal normal,
+    "Italic" normal italic,
+    "Semibold" 600 normal,
+    "SemiboldItalic" 600 italic,
+    "Bold" bold normal,
+    "BoldItalic" bold italic,
+    "ExtraBold" 800 normal,
+    "ExtraBoldItalic" 800 italic;
+
+@mixin font-def($name, $weight, $style) {
+    font-family: 'Open Sans';
+    src: url("./fonts/OpenSans-#{$name}.woff2") format("woff2");
+    font-weight: $weight;
+    font-style: $style;
+}
+
+@each $name, $weight, $style in $fonts {
+    /* #{$name} */
+    @font-face {
+        @include font-def($name, $weight, $style);
+    }
+}

@@ -1,0 +1,114 @@
+@import url(./counters.css);
+:root {
+    --h1-color: white;
+    --h2-color: white;
+    --h3-color: var(--theme-second-color);
+    --h4-color: var(--theme-second-color);
+    --h5-color: var(--theme-second-color);
+    --h6-color: var(--theme-second-color);
+    --header-underscore-color: var(--theme-second-color);
+    --toc-link-color: var(--theme-second-color);
+    --focus-header-color: var(--focus-bg-color);
+}
+
+h1 {
+    padding: 1.2em 0;
+    font-size: 3rem;
+    color: var(--h1-color);
+    background: var(--theme-color);
+    text-shadow: 0 0 10px black;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--h2-color);
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 1px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--header-underscore-color);
+}
+
+h3 {
+    color: var(--h3-color);
+    font-style: italic;
+}
+
+h4 {
+    color: var(--h4-color);
+}
+
+h5 {
+    color: var(--h5-color);
+}
+
+h6 {
+    color: var(--h6-color);
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 2em;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    margin-left: -1rem;
+}
+
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+    margin-top: 0;
+}
+
+.on-focus-mode h1,
+.on-focus-mode h2,
+.on-focus-mode h3,
+.on-focus-mode h4,
+.on-focus-mode h5,
+.on-focus-mode h6 {
+    color: var(--focus-header-color) !important;
+}
+
+/* Table of Content */
+.md-toc a {
+    color: var(--toc-link-color) !important;
+}
+
+.md-toc-h2 > .md-toc-inner {
+    margin-left: 1.5em;
+}
+
+.md-toc-h3 > .md-toc-inner {
+    margin-left: 3em;
+}
+
+.md-toc-h4 > .md-toc-inner {
+    margin-left: 4.5em;
+}
+
+.md-toc-h5 > .md-toc-inner {
+    margin-left: 6em;
+}
+
+.md-toc-h6 > .md-toc-inner {
+    margin-left: 7.5em;
+}

@@ -1,0 +1,34 @@
+h3.panel-header {
+    margin-left: 0;
+}
+
+h5.input-group-header {
+    color: var(--theme-second-color);
+}
+
+.megamenu {
+    &-content {
+        background: var(--bg-color);
+    }
+
+    &-menu-panel {
+        --item-hover-bg-color: var(--theme-second-color);
+    }
+
+    tbody tr:hover {
+        font-weight: bold;
+        color: var(--bg-color) !important;
+
+        > td {
+            color: inherit;
+        }
+    }
+}
+
+#recent-file-panel-action-btn {
+    background: var(--bg-second-color);
+
+    :hover {
+        background: var(--bg-third-color);
+    }
+}

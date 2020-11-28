@@ -1,0 +1,94 @@
+@import "./counters.css";
+
+:root {
+    --h1-color: white;
+    --h2-color: white;
+    --h3-color: var(--theme-second-color);
+    --h4-color: var(--theme-second-color);
+    --h5-color: var(--theme-second-color);
+    --h6-color: var(--theme-second-color);
+
+    --header-underscore-color: var(--theme-second-color);
+
+    --toc-link-color: var(--theme-second-color);
+
+    --focus-header-color: var(--focus-bg-color);
+}
+
+h1 {
+    @extend %center-text, %focus-color;
+    padding: 1.2em 0;
+    font-size: 3rem;
+    color: var(--h1-color);
+    background: var(--theme-color);
+    text-shadow: 0 0 10px black;
+}
+
+h2 {
+    @extend %center-text, %header-style, %focus-color;
+    font-size: 2rem;
+    color: var(--h2-color);
+
+    &::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 1px;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--header-underscore-color);
+    }
+}
+
+// assign css color variable to headers
+@for $h from 3 through 6 {
+    h#{$h} {
+        @extend %header-style, %shift-left, %focus-color;
+        color: var(--h#{$h}-color);
+
+        @if "h#{$h}" == "h3" {
+            font-style: italic;
+        }
+    }
+}
+
+%center-text {
+    text-align: center;
+}
+
+// header styles h2-h6
+%header-style {
+    margin-top: 2em;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+// shift header to left h3-h6
+%shift-left {
+    margin-left: -1rem;
+}
+
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+    margin-top: 0;
+}
+
+.on-focus-mode {
+    %focus-color {
+        color: var(--focus-header-color) !important;
+    }
+}
+
+/* Table of Content */
+.md-toc {
+    a {
+        color: var(--toc-link-color) !important;
+    }
+
+    @for $h from 2 through 6 {
+        &-h#{$h} > .md-toc-inner {
+            margin-left: ($h - 1) * 1.5em;
+        }
+    }
+}

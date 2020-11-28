@@ -1,0 +1,358 @@
+@charset "UTF-8";
+@use "sass:string";
+:root {
+    --code-block-bg-color: var(--bg-second-color);
+    --gutter-bg-color: var(--theme-color);
+    --linenumber-color: var(--bg-color);
+    --active-line-bg-color: var(--bg-third-color);
+    --focus-gutter-bg-color: var(--focus-bg-color);
+    --focus-select-text-bg-color: var(--focus-bg-color);
+    /* sc - source code */
+    --sc-keyword-color: #ff6000;
+    --sc-qualifier-color: #decb6b;
+    --sc-operator-color: white;
+    --sc-bracket-color: #997;
+    --sc-comment-color: #545454;
+    --sc-buildin-color: #ffcb6b;
+    --sc-number-color: #42bdf9;
+    --sc-atom-color: var(--sc-number-color);
+    --sc-string-color: #c3e88d;
+    --sc-string2-color: #f07178;
+    --sc-def-color: lime;
+    --sc-variable-color: var(--sc-def-color);
+    --sc-variable2-color: #eeffff;
+    --sc-variable3-color: #f07178;
+    --sc-property-color: #c792ea;
+    --sc-meta-color: #ffcb6b;
+    --sc-tag-color: #ff5370;
+    --sc-attribute-color: #c792ea;
+    /* sm - source mode*/
+    --sm-link-color: var(--theme-color);
+    --sm-comment-code-color: var(--sc-def-color);
+    --sm-header-property-color: var(--sc-property-color);
+    --sm-hr-color: var(--sc-comment-color);
+    --sm-tag-color: var(--sc-tag-color);
+    --sm-string-color: var(--sc-string-color);
+}
+
+.md-fences {
+    background: var(--code-block-bg-color);
+    margin: 0 0 30px;
+    padding: 0.3em 1em;
+    padding-top: 0.4em;
+    font-size: 1em;
+}
+
+/* BASICS */
+.CodeMirror {
+    /* Set height, width, borders, and global font properties here */
+    height: 300px;
+    height: auto;
+}
+
+.CodeMirror-scroll {
+    /* Set scrolling behaviour here */
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+/* PADDING */
+.CodeMirror-lines {
+    padding: 6px;
+    /* Vertical padding around content */
+}
+
+.CodeMirror pre {
+    /* Horizontal padding of content */
+    padding-left: 10px;
+}
+
+.CodeMirror-scrollbar-filler,
+.CodeMirror-gutter-filler {
+    background-color: black;
+    /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+.CodeMirror-gutters {
+    height: auto;
+    background-color: var(--gutter-bg-color);
+    white-space: nowrap;
+}
+
+.on-focus-mode .CodeMirror-gutters {
+    background: var(--focus-gutter-bg-color) !important;
+}
+
+.on-focus-mode .CodeMirror-selected,
+.on-focus-mode .CodeMirror-selectedtext {
+    background: var(--focus-select-text-bg-color) !important;
+}
+
+.CodeMirror-linenumber {
+    padding: 0 3px 0 5px;
+    text-align: right;
+    color: var(--linenumber-color);
+}
+
+/* CURSOR */
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 1px solid var(--text-color);
+    z-index: 3;
+}
+
+/* Shown when moving in bi-directional text */
+.CodeMirror div.CodeMirror-secondarycursor {
+    border-left: 1px solid silver;
+}
+
+.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor {
+    width: auto;
+    border: 0;
+    background: #7e7;
+    z-index: 1;
+}
+
+/* Can style cursor different in overwrite (non-insert) mode */
+/* .CodeMirror div.CodeMirror-cursor.CodeMirror-overwrite {} .cm-tab {
+    display: inline-block;
+} */
+/* DEFAULT THEME */
+.on-focus-mode .md-fences.md-focus .cm-keyword.CodeMirror-selectedtext,
+.cm-s-inner .cm-keyword {
+    color: var(--sc-keyword-color);
+}
+
+.cm-s-inner .cm-atom {
+    color: var(--sc-atom-color);
+}
+
+.cm-s-inner .cm-number {
+    color: var(--sc-number-color);
+}
+
+.cm-s-inner .cm-def {
+    color: var(--sc-def-color);
+}
+
+.cm-s-inner .cm-variable {
+    color: var(--sc-variable-color);
+}
+
+.cm-s-inner .cm-variable-2 {
+    color: var(--sc-variable2-color);
+}
+
+.cm-s-inner .cm-variable-3 {
+    color: var(--sc-variable3-color);
+}
+
+.cm-s-inner .cm-property {
+    color: var(--sc-property-color);
+}
+
+.cm-s-inner .cm-operator {
+    color: var(--sc-operator-color);
+}
+
+.cm-s-inner .cm-comment {
+    color: var(--sc-comment-color);
+}
+
+.cm-s-inner .cm-string {
+    color: var(--sc-string-color);
+}
+
+.cm-s-inner .cm-string-2 {
+    color: var(--sc-string2-color);
+}
+
+.cm-s-inner .cm-meta {
+    color: var(--sc-meta-color);
+}
+
+.cm-s-inner .cm-qualifier {
+    color: var(--sc-qualifier-color);
+}
+
+.cm-s-inner .cm-builtin {
+    color: var(--sc-buildin-color);
+}
+
+.cm-s-inner .cm-bracket {
+    color: var(--sc-bracket-color);
+}
+
+.cm-s-inner .cm-tag {
+    color: var(--sc-tag-color);
+}
+
+.cm-s-inner .cm-attribute {
+    color: var(--sc-attribute-color);
+}
+
+.cm-s-inner .cm-header {
+    color: var(--sm-header-property-color);
+}
+
+.cm-s-inner .cm-quote {
+    color: #090;
+}
+
+.cm-s-inner .cm-hr {
+    color: var(--sm-hr-color);
+}
+
+.cm-s-inner .cm-link {
+    color: var(--sm-link-color);
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+    background: var(--active-line-bg-color);
+}
+
+.cm-negative {
+    color: #d44;
+}
+
+.cm-positive {
+    color: #292;
+}
+
+.cm-error {
+    color: #f00;
+}
+
+.cm-invalidchar {
+    color: #f00;
+}
+
+.cm-header,
+.cm-strong {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.cm-del {
+    text-decoration: line-through;
+}
+
+.cm-em {
+    font-style: italic;
+}
+
+.cm-link {
+    text-decoration: underline;
+}
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+    color: #0f0;
+}
+
+div.CodeMirror span.CodeMirror-nonmatchingbracket {
+    color: #f22;
+}
+
+/** sourcemode highlight **/
+.cm-s-typora-default .cm-header,
+.cm-s-typora-default .cm-property {
+    color: var(--sm-header-property-color);
+}
+
+.cm-s-typora-default pre.cm-header1:not(.cm-atom) *:not(.cm-overlay) {
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.cm-s-typora-default pre.cm-header2:not(.cm-atom) *:not(.cm-overlay) {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+}
+
+.cm-s-typora-default .cm-atom,
+.cm-s-typora-default .cm-number {
+    color: var(--sc-number-color);
+}
+
+.cm-s-typora-default .cm-table-row,
+.cm-s-typora-default .cm-block-start {
+    font-family: monospace;
+}
+
+.cm-s-typora-default .cm-comment,
+.cm-s-typora-default .cm-code {
+    color: var(--sm-comment-code-color);
+    font-family: monospace;
+}
+
+.cm-s-typora-default .cm-tag {
+    color: var(--sm-tag-color);
+}
+
+.cm-s-typora-default .cm-string {
+    color: var(--sm-string-color);
+}
+
+.cm-s-typora-default .cm-link {
+    color: var(--sm-link-color);
+    text-decoration: underline;
+}
+
+.cm-s-typora-default .cm-variable-2,
+.cm-s-typora-default .cm-variable-1 {
+    color: inherit;
+}
+
+.cm-s-typora-default .cm-overlay {
+    font-size: 1rem;
+    font-family: monospace;
+}
+
+.cm-s-typora-default .CodeMirror-activeline-background {
+    left: -60px;
+    right: -30px;
+    background: rgba(204, 204, 204, 0.2);
+}
+
+.cm-s-typora-default .CodeMirror-gutters {
+    border-right: none;
+    background-color: inherit;
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+    border-left: 3px solid #e4629a;
+}
+
+.cm-s-typora-default .cm-trailing-space-new-line:after,
+.cm-startspace:after,
+.cm-starttab .cm-tab:after {
+    content: "•";
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    font-family: "LetterGothicStd", monospace;
+}
+
+.os-windows .cm-startspace:after,
+.os-windows .cm-starttab .cm-tab:after {
+    left: -0.1em;
+}
+
+.cm-starttab .cm-tab:after {
+    content: " ";
+}
+
+.cm-startspace,
+.cm-tab,
+.cm-starttab,
+.cm-trailing-space-a,
+.cm-trailing-space-b,
+.cm-trailing-space-new-line {
+    font-family: monospace;
+    position: relative;
+}
+
+.cm-s-typora-default .cm-trailing-space-new-line:after {
+    content: "↓";
+    opacity: 0.3;
+}

@@ -1,0 +1,119 @@
+:root {
+    --header-counter-color: white;
+    --toc-counter-color: white;
+}
+
+/* Counters */
+#write > h1 {
+    counter-reset: h2;
+}
+
+#write > h2 {
+    counter-reset: h3;
+}
+
+#write > h3 {
+    counter-reset: h4;
+}
+
+#write > h4 {
+    counter-reset: h5;
+}
+
+#write > h5 {
+    counter-reset: h6;
+}
+
+#write h2 {
+    counter-increment: h2;
+}
+
+#write > h3::before {
+    counter-increment: h3;
+    content: counter(h2) ". " counter(h3) ". ";
+}
+
+#write > h4::before {
+    counter-increment: h4;
+    content: counter(h2) ". " counter(h3) ". " counter(h4) ". ";
+}
+
+#write > h5::before {
+    counter-increment: h5;
+    content: counter(h2) ". " counter(h3) ". " counter(h4) ". " counter(h5) ". ";
+}
+
+#write > h6::before {
+    counter-increment: h6;
+    content: counter(h2) ". " counter(h3) ". " counter(h4) ". " counter(h5) ". " counter(h6) ". ";
+}
+
+#write > h3::before,
+#write > h4::before,
+#write > h5::before,
+#write > h6::before {
+    color: var(--header-counter-color);
+}
+
+h1.md-focus::before,
+h2.md-focus::before,
+h3.md-focus::before,
+h4.md-focus::before,
+h5.md-focus::before,
+h6.md-focus::before {
+    visibility: hidden;
+}
+
+/* ToC counters */
+.md-toc-h1 {
+    counter-reset: toch2;
+}
+
+.md-toc-h2 {
+    counter-reset: toch3;
+}
+
+.md-toc-h3 {
+    counter-reset: toch4;
+}
+
+.md-toc-h4 {
+    counter-reset: toch5;
+}
+
+.md-toc-h5 {
+    counter-reset: toch6;
+}
+
+.md-toc-h2 .md-toc-inner::before,
+.md-toc-h3 .md-toc-inner::before,
+.md-toc-h4 .md-toc-inner::before,
+.md-toc-h5 .md-toc-inner::before,
+.md-toc-h6 .md-toc-inner::before {
+    color: var(--toc-counter-color);
+}
+
+.md-toc-h2 .md-toc-inner::before {
+    counter-increment: toch2;
+    content: counter(toch2) ". ";
+}
+
+.md-toc-h3 .md-toc-inner::before {
+    counter-increment: toch3;
+    content: counter(toch2) ". " counter(toch3) ". ";
+}
+
+.md-toc-h4 .md-toc-inner::before {
+    counter-increment: toch4;
+    content: counter(toch2) ". " counter(toch3) ". " counter(toch4) ". ";
+}
+
+.md-toc-h5 .md-toc-inner::before {
+    counter-increment: toch5;
+    content: counter(toch2) ". " counter(toch3) ". " counter(toch4) ". " counter(toch5) ". ";
+}
+
+.md-toc-h6 .md-toc-inner::before {
+    counter-increment: toch6;
+    content: counter(toch2) ". " counter(toch3) ". " counter(toch4) ". " counter(toch5) ". " counter(toch6) ". ";
+}

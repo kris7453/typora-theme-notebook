@@ -1,0 +1,88 @@
+:root {
+    /** Typora variables **/
+    --side-bar-bg-color: var(--bg-second-color);
+    --window-border: 1px solid #eee;
+    /* Sidebar file menu */
+    --control-text-color: #cccccc;
+    --control-text-hover-color: var(--theme-second-color);
+    --active-file-bg-color: var(--bg-third-color);
+    --active-file-text-color: var(--theme-color);
+    --active-file-border-color: var(--theme-color);
+    --active-outline-bg-color: inherit;
+    --active-outline-text-color: var(--theme-color);
+    --outline-hover-bg-color: var(--bg-third-color);
+    --outline-hover-text-color: var(--theme-second-color);
+    /* Dropdown menu, outline, footer buttons */
+    --item-hover-bg-color: var(--theme-color);
+    --item-hover-text-color: var(--bg-color);
+    /* Acceptance button exist e.g. in resize menu */
+    --primary-color: var(--theme-color);
+    --primary-btn-text-color: var(--bg-second-color);
+    --primary-btn-border-color: var(--theme-color);
+    --select-text-bg-color: var(--theme-second-color);
+    --select-text-font-color: var(--bg-color);
+}
+
+.file-node-content:hover {
+    font-weight: bold;
+}
+
+#outline-content .outline-active {
+    background: var(--active-outline-bg-color);
+    color: var(--active-outline-text-color);
+}
+
+.outline-item:hover {
+    background: var(--outline-hover-bg-color);
+    color: var(--outline-hover-text-color);
+    font-weight: bold;
+}
+
+#outline-btn:hover {
+    color: inherit;
+}
+
+#typora-sidebar.open {
+    box-shadow: 0 0 14px black;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn {
+    background: var(--theme-color);
+    color: var(--bg-color);
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    background: #2d2d2d;
+}
+
+.context-menu.dropdown-menu > li > a,
+.dropdown-menu li a {
+    color: white;
+}
+
+.sidebar-footer-item:hover,
+.dropdown-menu > li > a:hover,
+.context-menu.dropdown-menu > .active > a,
+.context-menu.dropdown-menu > li > a:hover,
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active {
+    color: var(--item-hover-text-color);
+    font-weight: bold;
+}
+
+.md-table-edit th {
+    border: none;
+}
+
+.md-table-edit .md-grid-board th,
+.md-table-edit .md-grid-board td {
+    padding: 0 !important;
+}
+
+.md-table-edit .md-grid-board a.md-active {
+    background: var(--theme-color);
+}

@@ -1,0 +1,83 @@
+@import url(./notebook/common.css);
+:root {
+    --theme-color: hsl(199.5, 47.6%, 45.7%);
+    --theme-second-color: hsl(47.7, 71.8%, 65.3%);
+    --bg-color: #292929;
+    --bg-second-color: #353535;
+    --bg-third-color: #404040;
+    --text-color: #d6d6d6;
+    --text-second-color: #9c9c9c;
+    --meta-content-color: #a0a0a0;
+    --mark-bg-color: var(--theme-color);
+    --mark-text-color: var(--bg-color);
+    --link-color: var(--theme-color);
+    --sup-footnote-bg-color: var(--theme-second-color);
+    --sup-footnote-text-color: var(--bg-color);
+    --reference-def-name-color: var(--theme-second-color);
+    --code-bg-color: #d4d4d4;
+    --code-text-color: var(--bg-color);
+    --blockquote-border-color: var(--theme-color);
+    /* Focus mode */
+    --blur-text-color: #b1b1b1;
+    --focus-bg-color: #5e5e5e;
+}
+
+html,
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+#write pre.md-meta-block {
+    background: var(--bg-second-color);
+    color: var(--meta-content-color);
+}
+
+blockquote {
+    background: var(--bg-second-color);
+    color: var(--text-second-color);
+    border-left: 0.5rem solid var(--blockquote-border-color);
+}
+
+blockquote > blockquote {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+code {
+    background: var(--code-bg-color);
+    color: var(--code-text-color) !important;
+}
+
+mark {
+    background: var(--mark-bg-color);
+    color: var(--mark-text-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+sup.md-footnote {
+    background: var(--sup-footnote-bg-color);
+    color: var(--sup-footnote-text-color);
+}
+
+.md-def-name {
+    color: var(--reference-def-name-color);
+}
+
+.on-focus-mode code {
+    background: var(--focus-bg-color) !important;
+}
+
+.on-focus-mode mark {
+    background: var(--focus-bg-color) !important;
+}
+
+.on-focus-mode a {
+    color: var(--focus-bg-color);
+}
+
+.on-focus-mode sup.md-footnote {
+    background: var(--focus-bg-color) !important;
+}

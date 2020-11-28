@@ -1,0 +1,47 @@
+:root {
+    /** Typora variable **/
+    --drag-placeholder-color: #c7c5c5;
+    /** User variables **/
+    /* Writemode */
+    --table-header-bg-color: var(--theme-color);
+    --table-header-text-color: var(--bg-color);
+    --table-odd-rows-bg-color: var(--bg-second-color);
+    --table-even-rows-bg-color: var(--bg-color);
+    --table-text-color: var(--text-color);
+    --focus-table-theme-color: var(--focus-bg-color);
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 2px 0px;
+    border-bottom: 2px solid var(--table-header-bg-color);
+}
+
+th, td {
+    padding: 0 1rem;
+}
+
+th {
+    background: var(--table-header-bg-color);
+    color: var(--table-header-text-color);
+}
+
+td {
+    color: var(--table-text-color);
+}
+
+tr:nth-child(odd) {
+    background: var(--table-odd-rows-bg-color) !important;
+}
+
+tr:nth-child(even) {
+    background: var(--table-even-rows-bg-color) !important;
+}
+
+.on-focus-mode table {
+    border-color: var(--focus-table-theme-color);
+}
+
+.on-focus-mode th {
+    background: var(--focus-table-theme-color);
+}

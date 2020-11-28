@@ -1,0 +1,69 @@
+:root {
+    --header-counter-color: white;
+    --toc-counter-color: white;
+}
+
+/* Counters */
+#write {
+    @for $h from 1 through 5 {
+        > h#{$h} {
+            counter-reset: h#{$h + 1};
+        }
+    }
+
+    h2 {
+        counter-increment: h2;
+    }
+
+    $content: counter(h2) ". ";
+
+    @for $h from 3 through 6 {
+        $content: $content counter(h#{$h}) ". ";
+
+        > h#{$h}::before {
+            @extend %header-color;
+            counter-increment: h#{$h};
+            content: $content;
+        }
+    }
+
+    %header-color {
+        color: var(--header-counter-color);
+    }
+}
+
+h1.md-focus::before,
+h2.md-focus::before,
+h3.md-focus::before,
+h4.md-focus::before,
+h5.md-focus::before,
+h6.md-focus::before {
+    visibility: hidden;
+}
+
+/* ToC counters */
+@for $h from 1 through 5 {
+    .md-toc-h#{$h} {
+        counter-reset: toch#{$h + 1};
+    }
+}
+
+%toc-color {
+    color: var(--toc-counter-color);
+}
+
+.md-toc-inner::before {
+    $content: counter(toch2) ". ";
+
+    @for $h from 2 through 6 {
+        @if $h > 2 {
+            $content: $content counter(toch#{$h}) ". ";
+        }
+
+        .md-toc-h#{$h} & {
+            @extend %toc-color;
+            counter-increment: toch#{$h};
+            content: $content;
+        }
+    }
+}
