@@ -1,7 +1,8 @@
 @charset "UTF-8";
-@use "sass:string";
+
 :root {
     --code-block-bg-color: var(--bg-second-color);
+    --rawblock-edit-panel-bd: var(--code-block-bg-color);
     --gutter-bg-color: var(--theme-color);
     --linenumber-color: var(--bg-color);
     --active-line-bg-color: var(--bg-third-color);

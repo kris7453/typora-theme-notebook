@@ -9,6 +9,7 @@ $sc-keyword-color: "atom" --sc-atom-color, "number" --sc-number-color, "def" --s
 
 :root {
     --code-block-bg-color: var(--bg-second-color);
+    --rawblock-edit-panel-bd: var(--code-block-bg-color);
     --gutter-bg-color: var(--theme-color);
     --linenumber-color: var(--bg-color);
     --active-line-bg-color: var(--bg-third-color);
