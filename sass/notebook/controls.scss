@@ -11,7 +11,7 @@
     --active-file-text-color: var(--theme-color);
     --active-file-border-color: var(--theme-color);
 
-    --active-outline-bg-color: inherit;
+    --active-outline-bg-color: var(--theme-second-color);
     --active-outline-text-color: var(--theme-color);
     --outline-hover-bg-color: var(--bg-third-color);
     --outline-hover-text-color: var(--theme-second-color);
@@ -33,9 +33,16 @@
     font-weight: bold;
 }
 
-#outline-content .outline-active {
-    background: var(--active-outline-bg-color);
-    color: var(--active-outline-text-color);
+#outline-content {
+    .outline-item-active {
+        background: var(--active-outline-bg-color);
+        margin-right: -16px;
+    }
+
+    .outline-active {
+        background: var(--active-outline-bg-color);
+        color: var(--active-outline-text-color);
+    }
 }
 
 .outline-item:hover {
